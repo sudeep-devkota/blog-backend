@@ -88,9 +88,8 @@ exports.uploadBlog = async (req, res) => {
     }
 
     const imagename = req.file ? req.file.filename : null;
-    const imageUrl = `${req.protocol}://${req.get(
-      "host"
-    )}/uploads/${imagename}`;
+    const imageUrl = `https://blog-backend-80rj.onrender.com/uploads/${imagename}`;
+
     const blog = new Blog({
       title,
       description,
@@ -230,9 +229,7 @@ exports.updateBlog = async (req, res) => {
     let updatedata=req.body
    
    if(req.file){
-    updatedata.image=`${req.protocol}://${req.get(
-      "host"
-    )}/uploads/${imagename}`;
+    updatedata.image = `https://blog-backend-80rj.onrender.com/uploads/${imagename}`;
    }
     const blog = await Blog.findByIdAndUpdate(blogId, updatedata, { new: true });
     if (!blog) {
