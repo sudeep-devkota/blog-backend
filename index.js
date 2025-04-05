@@ -16,13 +16,18 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.use(cors({
-    origin:['http://localhost:3000',
-    "https://blog-app-gyu7.onrender.com"],
     
-
-
+app.use(cors({
+  origin: [
+    'http://localhost:5173', // for local dev
+    'https://blog-app-kl9i.vercel.app', // your Vercel frontend
+    'https://blog-app-kl9i-xxxxx-sudeep-devkotas-projects.vercel.app' // any Vercel preview deployments
+  ],
+  credentials: true
 }));
+
+
+
 
 
 
